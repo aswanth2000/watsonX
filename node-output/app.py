@@ -1,7 +1,9 @@
+from flasgger import Swagger
 from flask import Flask, jsonify, request
 import mail_sender
 import jd_generation
 app = Flask(__name__)
+swagger = Swagger(app)
 # returns the data that we send when we use POST.
 @app.route('/send_mail', methods = ['GET', 'POST'])
 def home():
