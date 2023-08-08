@@ -12,8 +12,11 @@ def send_mail(json_data):
     msg['To'] = ", ".join(recipients)
     msg.preamble = 'Multipart massage.\n'
     message = json_data['mail_body']
+    f = open(json_data['name']+"-offerLetter.txt", "w")
+    f.write("Hi"+json_data['name']+",\nWelcome to IBM. \nRegards, \nOnboarding Team")
+    f.close()
     msg.attach(MIMEText(message))
-    filename ="./sample.txt"
+    filename =json_data['name']+"-offerLetter.txt"
     part = MIMEBase('application', "octet-stream")
     part.set_payload(open(filename, "rb").read())
     encoders.encode_base64(part)
