@@ -3,4 +3,3 @@ uvicorn==0.18.3
 gunicorn==20.1.0
 Flask==2.0.3
 pandas==1.2.4
-ibm-generative-ai==0.2.2
