@@ -1,30 +1,18 @@
-
 from flask import Flask, jsonify, request
 import mail_sender
 import jd_generation
-import json
 app = Flask(__name__)
 # returns the data that we send when we use POST.
 @app.route('/send_mail', methods = ['GET', 'POST'])
 def home():
     if(request.method == 'GET'):
-        
+  
         data = "hello world"
         return jsonify({'data': data})
     elif request.method == "POST":
         json_data=request.get_json(force=True)
         print(json_data)
-        return jsonify({'data':mail_sender.send_mail(json_data)})
-@app.route('/send_email', methods = ['GET'])
-def mail():
-     if(request.method == 'GET'):
-         args = request.args
-         mail_subject = args.get('mail_subject')
-         mail_to = args.get('mail_to')
-         mail_body = args.get('mail_body')
-         name = args.get('name')
-         return jsonify({'data':mail_sender.send_mail_get(mail_subject,mail_to,mail_body,name)})
-
+        return mail_sender.send_mail(json_data)
 @app.route("/generate_jd",methods=['POST'])
 def generateJD():
      json_data=request.get_json(force=True)
