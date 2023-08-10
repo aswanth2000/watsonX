@@ -15,7 +15,7 @@ def send_mail(json_data):
     msg.preamble = 'Multipart massage.\n'
     message = json_data['mail_body']
     f = open(json_data['name']+"-offerLetter.txt", "w")
-    f.write("Hi"+json_data['name']+",\nWelcome to IBM. \nRegards, \nOnboarding Team")
+    f.write("Dear "+json_data['name']+",\n We are pleased to extend an offer of employment for the position of "+json_data['position']+" at IBM. We were highly impressed with your qualifications and experience and are excited about the prospect of you joining our team. \nRegards, \nOnboarding Team")
     f.close()
     msg.attach(MIMEText(message))
     filename =json_data['name']+"-offerLetter.txt"
@@ -34,3 +34,4 @@ def send_mail(json_data):
     server.close()
     print("Mail sent")
     return "Mail Successfully went"
+
